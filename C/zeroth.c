@@ -2,7 +2,7 @@
 
 int main()
 {
-printf ("Hello world \n");
+printf ("Hello world. This is C \n");
 getchar ();
 return 0;
 }	
