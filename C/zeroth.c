@@ -3,8 +3,6 @@
 int main()
 {
 printf ("Hello world. This is C \n");
-getchar ();
+scanf ("%c");
 return 0;
 }	
-
-

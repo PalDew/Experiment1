@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/palashdewangan/Documents/Experiment1/C",
-      "program": "/Users/palashdewangan/Documents/Experiment1/C/build/Debug/outDebug"
+      "cwd": "/home/palash/Documents/Experiment1/C",
+      "program": "/home/palash/Documents/Experiment1/C/build/Debug/outDebug"
     }
   ]
 }
