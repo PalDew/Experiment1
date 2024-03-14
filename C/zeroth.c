@@ -3,6 +3,6 @@
 int main()
 {
 printf ("Hello world. This is C \n");
-scanf ("%c");
+scanf();
 return 0;
 }	
