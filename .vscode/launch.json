@@ -3,22 +3,11 @@
   "configurations": [
     {
       "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
+      "type": "lldb",
       "request": "launch",
       "args": [],
-      "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "/home/palash/Documents/Experiment1/C",
-      "program": "/home/palash/Documents/Experiment1/C/build/Debug/outDebug",
-      "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
+      "cwd": "/Users/palashdewangan/Documents/Experiment1/C/LCTHW",
+      "program": "/Users/palashdewangan/Documents/Experiment1/C/LCTHW/build/Debug/outDebug"
     }
   ]
 }
