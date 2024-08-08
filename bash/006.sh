@@ -8,5 +8,7 @@ then
 	$command
 else
 	echo "$command is not available, you could install it."
-	sudo pacman -Ss htop
+	sudo pacman -Ss $command --noconfirm
 fi
+
+$command
