@@ -1,0 +1,23 @@
+#+title: Introduction to C
+#+date: <2024-09-21 Sat>
+
+
+*** Introduction
+
+Operating systems, languages and applications are built upon C.
+Study C not aas a programming language, but as a plaftform on which modern programming languages are built.
+
+*** History of C
+
+C was developed to address bytes rather an words (in computers) from Bell labs.
+In 1978, almost everything changed.
+C evolved hand in hand with Unix portability.
+
+C is a great systems programming language. It is not a great general purpose language.
+Lack of solid dynamic memory support and no string type variables in C.
+Python is a great general purpose language.
+C++ is just a more powerful, flexible and intricate version of C.
+Java, JS, Python, C# are powerful languages, but they aren't close to bare metal, as they said.
+A layer of abstraction is added on top to keep them away from the hardware.
+Rust is probably the best successor to C.
+Rust has to be stable, mature and dependable.
