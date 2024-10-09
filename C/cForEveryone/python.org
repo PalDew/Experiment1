@@ -1,6 +1,0 @@
-#+title: Python Notes
-#+date: <2024-09-21 Sat>
-
-* Programming is for everybody
-Computers want to do things. They are built and designed for completing tasts.
-The default state of a computer is generally witing for the next command.
