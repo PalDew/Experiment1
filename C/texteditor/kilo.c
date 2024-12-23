@@ -1,8 +1,6 @@
 #include <stdio.h>
-
 int main ()
 {
-printf("Wassup World\n!");
-getchar();
+  printf("What is this!");
 return 0;
 }
