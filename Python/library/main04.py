@@ -5,7 +5,7 @@ import curses
 import sys 
 
 # Path to your CSV file
-csv_file_path = '/home/palash/Downloads/testa.csv'
+csv_file_path = '/home/palash/Downloads/lib.csv'
 
 # Open the CSV file
 with open(csv_file_path, mode='r', newline='', encoding='utf-8') as file:
