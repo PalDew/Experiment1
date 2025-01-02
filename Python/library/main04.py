@@ -66,11 +66,19 @@ def main(stdscr):
             current_row += 1
         elif key == ord('k') and current_row > 0:  # Move up on 'k'
             current_row -= 1
-        elif key == ord('o'):  # Print the "Link to file" for the current row
-            if "Link to file" in rows[current_row]:
-                link = rows[current_row]["Link to file"] 
-                stdscr.addstr(len(rows) + 4, 0, f"Link to file in current row: {link}")
-            else:
-                stdscr.addstr(len(rows) + 4, 0, "Link to file column not found in this row.")
-            stdscr.refresh()   
+        elif key == ord('o'):  # Open the file with 'o'
+            # Reopen the CSV file and read the "Link to file" column
+            with open(csv_file_path, mode='r', newline='', encoding='utf-8') as file:
+                new_reader = csv.DictReader(file)
+                new_rows = list(new_reader)
+
+                # Get the file path from the currently highlighted row
+                file_path = new_rows[current_row]["Link to file"].strip()
+
+                # Display the selected file path
+                stdscr.addstr(len(rows) + 3, 0, f"Selected file: {file_path}".ljust(80))
+                stdscr.refresh()
+
+                # Open the file with zathura using nohup
+                os.system(f'nohup zathura "{file_path}" &')
 curses.wrapper(main)
