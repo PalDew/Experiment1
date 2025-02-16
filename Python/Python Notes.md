@@ -16,8 +16,9 @@ Functions Used:
 Dynamically typed language
 Interpreted, not compiled
 + operator can be used to join strings.
-Expressions are most basic indd of programming instruction. They can always evaluate down toa single value.
-Staements are more generalized form. Any instruction that results in an action can be termed as a statement. It has to have a valid syntax and meaning though.
+* operator can be used to repeat strings.
+Expressions are most basic units of programming instruction. They can always evaluate down to a single value.
+Statements are more generalized form. Any instruction that results in an action can be termed as a statement. It has to have a valid syntax and meaning though.
 Float, Int and String as Data Types
 Boolean value - either true or false
 #### Comparison Operators
