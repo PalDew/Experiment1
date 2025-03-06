@@ -14,6 +14,10 @@ int main()
     scanf("%d", &y);
     printf("%d\n",y);
     x += y>5 ? 5:-5; 
-    printf("If the integer is greater than 5, we add 5, else we subtract 5 to 0.\nResult: %d\n",x);
-    return 0;
+    printf("If the integer is greater than 5, we add 5, else we subtract 5 from 0.\nResult: %d\n",x);
+	int b;
+	printf("Enter another number: ");
+	scanf("%d" ,&b);
+	printf("The number %d is %s.\n", b , b % 2 == 0? "even" : "odd");  
+	return 0;
 }
