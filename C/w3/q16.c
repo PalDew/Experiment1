@@ -3,13 +3,17 @@
 
 #include <stdio.h>
 
-int fact(int n) { return 0; }
+int fact(int n) { 
+  if (n > 1)
+  n = fact (n-1) * n;
+  else
+    return n; }
 
 int main(int argc, char *argv[]) {
   int n, f;
-  printf("Your number pelase!\t");
+  printf("Your number plase!: ");
   scanf("%d", &n);
   f = fact(n);
-  printf("The answer you are looking for is: %d\n", f);
+  printf("The factorial for %d is: %d\n",n, f);
   return 0;
 }
