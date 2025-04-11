@@ -7,4 +7,6 @@ clean:
 	 rm -f 003_1
 	 rm -f 004
 	 rm -f 004_1
-	
+	 rm -f 005
+	 rm -f 005_1
+	 rm -f 006
