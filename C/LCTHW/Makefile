@@ -10,3 +10,4 @@ clean:
 	 rm -f 005
 	 rm -f 005_1
 	 rm -f 006
+	 rm -f 007
