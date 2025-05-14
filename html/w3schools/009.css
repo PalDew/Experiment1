@@ -1,0 +1,13 @@
+body {
+	background-color: powderblue;
+}
+h2 {
+	color: blue;
+	font-family: helvetica;}
+p {
+        color:#3cb371;
+	background-color: LightGray;
+	padding: 20px;
+	border:2px dotted red;
+	margin: 20px;
+}
