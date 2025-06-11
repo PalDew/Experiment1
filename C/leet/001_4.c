@@ -1,4 +1,8 @@
 /* This program just prints the reverse of a number */
+//
+//
+
+
 
 #include<stdio.h>
 

@@ -1,4 +1,4 @@
-// Doing the palindrome thing, functionally
+// Check if a number is palindrome, using a function
 #include <stdbool.h>
 #include <stdio.h>
 bool isPalindrome(int x) {

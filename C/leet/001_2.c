@@ -1,4 +1,4 @@
-// Doing the same reversal thing, functionally
+// Reverse a number, in a separate function
 #include<stdio.h>
 
 int reverse (int x)
@@ -13,7 +13,6 @@ return y;
 }
 
 int main (int argc, char *argv[])
-
 {
 int x;
 printf("Enter x: ");
