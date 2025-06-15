@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     //  Then, for 0 arguments, it will print the first one
     //  Does never run the last else statement
     printf("Yup you have given correct number of arguments.\n");
-    for (i = 1; i < argc; i++) {
+   for (i = 1; i < argc; i++) {
       printf("%s\n", argv[i]);
     }
   } else { // If you do not use the last else statement, you wouldn't know when

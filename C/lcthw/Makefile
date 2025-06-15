@@ -11,6 +11,7 @@ clean:
 	 rm -f 005_1
 	 rm -f 006
 	 rm -f 007
-	 rm -f 007
 	 rm -f 008
 	 rm -f 009
+	 rm -f 009_1
+	 rm -f 010
