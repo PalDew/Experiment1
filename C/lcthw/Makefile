@@ -15,3 +15,4 @@ clean:
 	 rm -f 009
 	 rm -f 009_1
 	 rm -f 010
+	 rm -f 011

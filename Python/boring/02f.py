@@ -1,5 +1,4 @@
-## Range function
-
+## Range function (pg 54)
 print ('My name is')
 for i in range(1, 6):
     print('Palash five times ' + str(i) )
