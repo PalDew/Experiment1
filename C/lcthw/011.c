@@ -8,19 +8,19 @@
 #include<stdlib.h>
 #include<string.h>
 
-struct Person {
+struct Person { //defines and declares the datatype Person (we use struct for a custom object-like data in C)
 char *name;
 int age;
 int height;
 int weight;
 };
 
-struct Person *Person_create(char *name, int age, int height, int weight)
+struct Person *Person_create(char *name, int age, int height, int weight) //this is a function of the type struct person, named Person_create
 {
   struct Person *who = malloc(sizeof(struct Person));
   assert(who != NULL); //checking for null, because malloc returns null in case of a failed operation.
 
-  // we have to use the arrow operator because we are dealing with pointers here.
+  // we have to use the arrow operator because we are dealing with pointers here. We can use (*who.age = age too, that would be syntactically correct)
  who -> name = strdup(name); //strdup returns a pointer to a null terminated string. 
   who -> age = age; //in the struct of person, named who; find the age variable and assign it to the age variable that is input from the function. 
   who -> height = height;
