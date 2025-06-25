@@ -1,0 +1,250 @@
+** Chapter 3 - Functions in Python
+**** Making custom Hello Funciton
+
+#+BEGIN_SRC python :results output
+def hello():
+ print('Howdy!')
+ print('Howdy!!')
+ print('Hello There.')
+hello()
+hello()
+hello()
+#+END_SRC
+
+#+RESULTS:
+: Howdy!
+: Howdy!!
+: Hello There.
+: Howdy!
+: Howdy!!
+: Hello There.
+: Howdy!
+: Howdy!!
+: Hello There.
+
+Generally, functions are written to reuse a code. Avoid duplication.
+That way, when you want to make changes, you have to change a few things.
+Also makes the code easier to read and understand.
+
+**** Making Funcitons with parameters
+#+begin_src python :results output
+def hello(name):
+  print("Hello, " + name + '!')
+hello('Alice')
+hello('Baaaaob')    
+#+END_SRC
+
+#+RESULTS:
+: Hello, Alice!
+: Hello, Baaaaob!
+
+In the definition, the funciton asks for a parameter called name.
+If you don't supply the parameter, :python throws an error.
+The value stored in the parameter is lost/deleted the next time you call the function again.
+Kind of like how every while/for loop statement ends in a continue statement by default.
+
+**** Return Values and return statements
+Upon execution, a function returns a value.
+The default value is None in python.
+Unless there is a special type of function, like mathematical function.
+We can customize what the function returns.
+A return statement consists of return <any value>
+
+#+BEGIN_SRC python :results output
+    import random
+    def getAnswer(answerNumber):
+        if answerNumber == 1:
+            return "It is certain."
+        elif answerNumber == 2:
+            return "It is decidely so." 
+        elif answerNumber == 3:
+            return "Yes" 
+        elif answerNumber == 4:
+            return "Future hazy. Let's ask again." 
+        elif answerNumber == 5:
+            return "Not available. Ask again." 
+        elif answerNumber == 6:
+            return "Concentrate harder and try again." 
+        elif answerNumber == 7:
+            return "My reply is no" 
+        elif answerNumber == 8:
+            return "Outlook not so good." 
+        elif answerNumber == 9:
+            return "Very Doubtful" 
+
+    print (getAnswer(random.randint(1,9))) 
+    ## Or you could write:
+## r = random.randint(1,9)
+## fortune = getAsnwer(r)
+## print(fortune)
+#+end_src
+
+#+RESULTS:
+: Outlook not so good.
+
+The results demonstrate that you can pass the return value of a fuunction as an argument to another function.
+**** None Value
+All the functions return none value, unless specified.
+It represents absence of a data.
+Represented as None.
+
+For example:
+#+BEGIN_SRC python :results output
+    spam = print("Hello")
+    spam == None #Notice the absence of the single or double quotes.
+    print(spam)
+#+END_SRC
+
+#+RESULTS:
+: Hello
+: None
+
+**** Keyword Arguments and Print() statement
+- The position of the arguement matters for their identification.
+  Example: random.randint(1, 10) is different from random.randint(10, 1). The first one prints a random value between 1 and 10, whereas the second statement throws an error
+- There are also keyword arguments. Ex, in print() statement, we can use end and sep to specify what should be displayed on the screen.
+  Example:
+#+begin_src python :results output
+    print("Hello")
+    print("World") ## print statement automatically adds a new line at the end of one statement by default.
+    ##versus
+    print("Hello", end='') ## We have specified that the end of the present statement be nothing.
+    print("World")
+    ## Another example
+    print("Cat, rat, dog")
+    print("Cat","rat","dog")
+    print("Cat","rat","dog", sep=",")
+    print("Cat","rat","dog", sep="!") 
+#+end_src
+
+#+RESULTS:
+: Hello
+: World
+: HelloWorld
+: Cat, rat, dog
+: Cat rat dog
+: Cat,rat,dog
+: Cat!rat!dog
+
+- Some functions can have keyword arguments, some may not. We can write keyword arguments for our own functions as well.
+- We can specify them when we decide to call the function.
+
+**** Local and Gobal Scopes
+- Generally, parameters and arguments defined inside the function have a local scope.
+- Variables that are assigned outside a function generally have a global scope.
+- If we think of the scope as a container for a variable, the container is created when the program is called and destroyed when the program exits.
+  For local variables, the container gets destroyed when the functin returns a value; each time.
+- Only within the scope, a variable can be used. However, different variables can have the same name if they have different scopes
+- In python, a function interacts with the program only by using parameters and return values. That is why local variables are so important while programming.
+
+***** Local variables cannot be used in global scope.
+#+begin_src python :results output
+    def spam():
+        eggs = 31337
+    spam()
+    print(eggs)
+## the error states that name 'eggs' is not defined.
+## Because we are using eggs globally, when it was defined locally in the spam functon
+#+end_src
+
+#+RESULTS:
+
+***** One local is different from other local scopes.
+#+begin_src python :results output
+    def spam():
+      eggs = 99
+      bacon()
+      print(eggs)
+    def bacon():
+      ham = 101
+      eggs = 0
+    spam()  
+#+end_src
+
+#+RESULTS:
+: 99
+- Upon execution, first the spam function is called. It creates a local scope where the value of eggs is 99.
+  Then, the function bacon is called. This creates another local scope where the value of eggs is 0 (I am assuming a different memory space) and ham is 101.
+  Next, the funciton bacon returns a null value, which destroys the second local container, where the value of eggs is 0.
+  Lastly, the statement print is executed - it prints the variable eggs. The only variable in the scope is 99 as the previous one is destroyed.
+  Thus, the value 99 is printed on the screen.
+
+***** The following example shows that local functions can use a globally declared variable.
+#+begin_src python :results output
+    def spam():
+      eggs = "spam local"
+      print(eggs) #prints eggs local
+    def bacon():
+      eggs = "bacon local"
+      print(eggs) #prints bacon local
+      spam() #calls the spam function
+      print(eggs) #prints bacon local again, because of the previous example
+    eggs = "global"
+    bacon()
+    print(eggs) #this will print global
+#+end_src
+
+#+RESULTS:
+: bacon local
+: spam local
+: bacon local
+: global
+
+- First we define the function spam, with the local variable eggs as spam local, and with the instruction to print it, when the function is called.
+  Next, the function bacon is defined with the local variable eggs as bacon local & the instruction to print it. It then calls the eggs function. It will print the local variable eggs again when called.
+  Until now, nothing will happen. We have just declared two functions with their own local variables and the instruction to print them.
+  For the next step, we globally (outside the scope of two functions) declare the egg variable, holding the value global.
+  Then we call the function bacon to execute. Wile does first prints bacon local, calls spam functon that prints spam local, again prints the variable eggs as bacon local.
+  Lasty, the global egg gets printed as global. Because all the other instances or containers of the egg variable are destroyed when they returned their null value upon completion.
+
+***** Using the global keyword to declare a global variable
+#+begin_src python :results output
+    def spam():
+        global eggs #note the use of global keyword
+        eggs = "spam"
+    eggs = 'global'
+    spam()
+    print(eggs)
+#+end_src
+
+#+RESULTS:
+: spam
+- Here, we have declared eggs as a global variable using the keyword global.
+
+- In a function, a variable is either always global or alwqays local.
+- If you decided to use a local variable, before assigning a value to it, python throws an error.
+- Often, we treat functions as black boxes; often concerning ourselves with the parameters and the return value only.
+
+**** Exception handling
+- Generally, when there is an error (or exception); a program crashes.
+- To prevent the crashing, we use try and except commands.
+  The potential error is declared in the try command. Except statement is the place where you jump to, in case the error is encountered.
+Demonstration:
+
+#+begin_src python :results output
+    def spam(divideby):
+        try:
+            return 42 / divideby
+        except ZeroDivisionError:
+            print("Error: Invalid Argument.")
+    print(spam(2))        
+    print(spam(12))        
+    print(spam(0))        
+    print(spam(1))        
+#+end_src
+
+#+RESULTS:
+: 21.0
+: 3.5
+: Error: Invalid Argument.
+: None
+: 42.0
+- I wondered why the function returned both the error message and the None return value.
+  Turns out, it is the print statement that made it possible.
+  If I had just called the spam function with the argument 0, it would have only displayed the error, without the None return statement.
+  If there is a try block that calls a function, and that might invoke an error, even that is caught by the except statement.
+
+Let's see the last line in a demonstration:
+#+begin_src python :results output
+
+#+end_src
