@@ -2,13 +2,13 @@
 **** Making custom Hello Funciton
 
 #+BEGIN_SRC python :results output
-def hello():
- print('Howdy!')
- print('Howdy!!')
- print('Hello There.')
-hello()
-hello()
-hello()
+    def hello():
+     print('Howdy!')
+     print('Howdy!!')
+     print('Hello There.')
+    hello()
+    hello()
+    hello()
 #+END_SRC
 
 #+RESULTS:
@@ -274,3 +274,20 @@ Let's see the last line in a demonstration:
 
 - This program won't run in babel org mode. Not in the regular way.
 
+  
+**** Practice Questions
+***** Collatz function:
+It has one parameter: name - number, type - integer
+If number is even, then it returns number // 2 : This is the floor operator. It gives an int output. The quotient is rounded off the nearest integer smaller than the actual decimal value. Eg: 7 // 2 is 3, 9 // 2 is 4 and -7 // 2 is -4.
+If the number is odd, then it returns 3x+1 as the value.
+#+begin_src python :results output :var number = 11
+ def collatz (number):
+    if (number % 2) == 0:
+       print(number // 2) 
+    else :
+       print((number * 3) + 1)
+ collatz(int(number))
+#+end_src
+
+#+RESULTS:
+: 34

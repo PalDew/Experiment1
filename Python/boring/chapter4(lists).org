@@ -1,0 +1,76 @@
+#+DATE: <2025-06-28 Sat>
+
+Page 79 of the book.
+
+* Introduction
+This chapter will talk about list and touple data type.
+They contain multiple values, ideal for programs that utilize large amounts of data.
+Lists can have lists inside them, thus creating hierarchical data.
+
+* List Data Type
+A list is a value that contains multiple values in an ordered sequence.
+Values inside the list are called items. They are seperated by a comma, this property is called comma delimited.
+A list begins with a [ and ends with a ] character.
+
+In the example:
+spam = ['hello', True, 42, 'rat']
+The variable stores the value of the list. The value of the list is [].
+Yup, it is an empty list. The value assigned to the variable is empty list, this empty list will contain the items of the list.
+
+It works like this:
+First, the memory for the variable name is created. And then the list object is created.
+The variable holds the reference or pointer to the list object.
+The list object holds the memory locations of the pointers or reference to the items in the list.
+The items in the list are stored in their own memory space.
+
++-----------------+       +-----------------+
+| my_list (name)  |-----> | List Object     |
++-----------------+       | (in heap)       |
+                          +-----------------+
+                          | [0]: Ref to 10  |--------------------+
+                          | [1]: Ref to 'h' |-----------------+  |
+                          +-----------------+                 |  |
+                                                              |  |
+             +------------------------------------------------+  |
+             |                                                   |
+             V                                                   V
+      +-------------+                                     +---------------+
+      | Int Object  |                                     | String Object |
+      | value: 10   |                                     | value: 'hello'|
+      +-------------+                                     +---------------+
+      (in heap)                                           (in heap)
+
+I got the above illustration from gemini.
+** Individual items in the list using index.
+Just like an array, the items are referenced as spam[0], spam[2], spam[3], etc. 
+If you reference an item that is not defined, the error: list index out of range.
+Indexes can only be integers, not floats or strings or anything. A typedef error is shown.
+
+- A list can also contain other lists:
+  spam = [["Cat", "Bat"], [1, "Rat", True]]
+  If you referenced spam[0], it is equal to ["Cat","Bat"]
+  If you referenced spam[0][1], the result is "Bat".
+  spam[1] is [1,"Rat", True]
+
+** Negative Index
+- If you put -ve index, python will start counting from the end.
+  spam[-1] will give [1 ,"Bat",True]
+  spam[-1][2] will give True.
+
+** Slicing the list to sublists
+You can create sub-lists by typing the start and end of the index you want.
+Starts at the value of first index; does not include the second index.
+Ex: if spam = ["A","B","C","D","E"]
+spam [1:4] = "B","C","D"
+spam [1:-2] = 'B', 'C'
+#+BEGIN_SRC python :results output
+spam = ["A","B","C","D","E"]
+print(spam[1:-2])
+#+end_src
+
+#+RESULTS:
+: ['B', 'C']
+
+- You will notice the single quotes in the output, instead of the double quotes in the input.
+- This is because by default, python uses the repr() representation of string.
+  And that displays the single quotes, especially in the interactive shell.
