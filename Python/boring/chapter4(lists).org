@@ -8,6 +8,7 @@ They contain multiple values, ideal for programs that utilize large amounts of d
 Lists can have lists inside them, thus creating hierarchical data.
 
 * List Data Type
+** Introduction
 A list is a value that contains multiple values in an ordered sequence.
 Values inside the list are called items. They are seperated by a comma, this property is called comma delimited.
 A list begins with a [ and ends with a ] character.
@@ -42,6 +43,7 @@ The items in the list are stored in their own memory space.
 
 I got the above illustration from gemini.
 ** Individual items in the list using index.
+
 Just like an array, the items are referenced as spam[0], spam[2], spam[3], etc. 
 If you reference an item that is not defined, the error: list index out of range.
 Indexes can only be integers, not floats or strings or anything. A typedef error is shown.
@@ -58,19 +60,211 @@ Indexes can only be integers, not floats or strings or anything. A typedef error
   spam[-1][2] will give True.
 
 ** Slicing the list to sublists
+
 You can create sub-lists by typing the start and end of the index you want.
 Starts at the value of first index; does not include the second index.
+
 Ex: if spam = ["A","B","C","D","E"]
 spam [1:4] = "B","C","D"
 spam [1:-2] = 'B', 'C'
+
 #+BEGIN_SRC python :results output
 spam = ["A","B","C","D","E"]
 print(spam[1:-2])
+print(len(spam))
 #+end_src
 
 #+RESULTS:
 : ['B', 'C']
+: 5
 
 - You will notice the single quotes in the output, instead of the double quotes in the input.
+  
 - This is because by default, python uses the repr() representation of string.
   And that displays the single quotes, especially in the interactive shell.
+
+- The number of values inside the list can be get by len() function.
+   
+** Changing values in a List with Indexes
+
+- We can change an element of the list by using the index and assignment operator.
+
+#+BEGIN_SRC python :results output
+    spam = ["a", "b", "c", "d", "e","f"]
+    print(spam)
+    spam[-2] = "Hsalap"
+    print("The new list is: ")
+    print(spam)
+#+end_src
+
+#+RESULTS:
+: ['a', 'b', 'c', 'd', 'e', 'f']
+: The new list is: 
+: ['a', 'b', 'c', 'd', 'Hsalap', 'f']
+
+** List Concatenation and List Replication
+
+- '+' operator combines two or more lists, just like a string operation
+  (I am wondering, does integer multiplicaiton duplicates the list too or not)
+  (Apparently it does)
+
+- Apparently, lists can be cast as strings too.
+
+#+BEGIN_SRC python :results output
+    spam = ["a", "b", "c", "d", "e","f"]
+    yoyo = 2 * spam
+    print("spam = " + str(spam))
+    print("Yoyo = " + str(yoyo))
+#+end_src
+
+#+RESULTS:
+: spam = ['a', 'b', 'c', 'd', 'e', 'f']
+: Yoyo = ['a', 'b', 'c', 'd', 'e', 'f', 'a', 'b', 'c', 'd', 'e', 'f']
+
+** Removing elements with del statement
+
+- Select the index and just precede it with del.
+
+#+BEGIN_SRC python :results output
+    spam = ["a", "b", "c", "d", "e","f"]
+    yoyo = 2 * spam
+    print("spam = " + str(spam))
+    print("Yoyo = " + str(yoyo))
+    del yoyo [11]
+    print(yoyo)
+#+end_src
+
+#+RESULTS:
+: spam = ['a', 'b', 'c', 'd', 'e', 'f']
+: Yoyo = ['a', 'b', 'c', 'd', 'e', 'f', 'a', 'b', 'c', 'd', 'e', 'f']
+: ['a', 'b', 'c', 'd', 'e', 'f', 'a', 'b', 'c', 'd', 'e']
+
+- Notice I deleted the 12th element in yoyo, after string replication.
+- The delete statement can also be used to delete a simple variable, almost like an unassign statement.
+
+** Working with Lists
+
+- When working with problems where we are not sure of the number of related elements, a list is a good way to store the data.
+
+- Following is a good way to see how lists are faster and easier to work with:
+
+#+begin_src python :results output
+catNames = [] ## This is a way to declare empty list   
+while True:
+    print("Enter the name of the cat number " + str(len(catNames)+1) + ". Or enter nothing to stop.")
+    name = input()
+    if name == "":
+         break
+    catNames = catNames + [name] ##adding two lists, and treating the varible name with single element as a list
+print("The cat names are: ")    
+for name in catNames: ## There are special iterable operators in python that know how to traverse a list. They automatically increment and terminate the list.
+## Here, the name variable is automatically assigned to the elements of the catNames array, one by one, in each loop or iteration.
+    print(name)
+#+end_src
+
+- We have used statements like for i in range (1,4)
+
+#+begin_src python :results output
+    for i in range (4):
+        print(i)
+#+end_src
+
+#+RESULTS:
+: 0
+: 1
+: 2
+: 3
+ We are treating range as a list with elements [0,1,2,3]
+ 
+- Such list-like variables/functions are called sequences.
+
+#+begin_src python :results output
+    supplies = ["pens", "staples", "flame-throwers", "binders"]
+    for i in range(len(supplies)):
+        print("Index " + str(i) + " in supplies list is: " + str(supplies[i]))
+#+end_src
+
+#+RESULTS:
+: Index 0 in supplies list is: pens
+: Index 1 in supplies list is: staples
+: Index 2 in supplies list is: flame-throwers
+: Index 3 in supplies list is: binders
+
+- 'in' and 'not in' operators
+#+begin_src python :results output
+    'howdy' in ["hello", "howdy", "hola"]
+#+end_src
+    This will print True in the interactive python shell.
+    It would have given False in the other case.
+
+- Another Example demonstrating the use of 'in' and 'not in' operators:
+  This program lets the user type in a pet name, and then checks if the name is unique or already in the list of names.
+
+#+begin_src python :results output
+    myPets = ['Zohie', "Pookie", "Hashie"]
+    print("Enter a pet's name: ")
+    name = input()
+    if name not in myPets:
+        print("I do not have " + str(name) + " as a pet.")
+    else:
+        printf("Yes! " + str(name) + " is my pet.")
+#+end_src
+
+- We can assign multiple values to a list in a single statement.
+  But remember that the number of items should be exactly the same in the assignment statement as in the list.
+
+** Augmented Assignment Operators 
+- We frequently use the variable itself while assigning values.
+  Like:
+  spam = spam + 1   OR  spam += 1
+  spam = spam - 1   OR  spam -= 1
+  spam = spam * 1   OR  spam *= 1
+  spam = spam / 1   OR  spam /= 1
+  spam = spam % 1   OR  spam %= 1
+
+The += operator can also do string and list concatenation.
+
+** Methods
+
+- A method is the same thing as a function.
+- It is called on a value. For a list, we call it using a period.
+- Each data type has its own set of methods.
+
+*** Finding a Value in the list using the index() Method
+#+begin_src python :results output
+    spam = ["A", "B", "C", "D","E"]
+    print(spam.index("A"))
+    print(spam.index("a")) ## This line throws ValueError that 'a' is not in the list  
+#+end_src
+
+#+RESULTS:
+: 0
+- When there are duplicates, the first occurence is sent back as the return value.
+
+*** Adding using append() and insert() Methods
+
+- Append() method adds a value to the end of the list 
+#+begin_src python :results output
+spam = ["A", "B", "C", "D", "E"]
+spam.append("Mouse")
+print(spam)
+#+end_src
+
+#+RESULTS:
+: ['A', 'B', 'C', 'D', 'E', 'Mouse']
+
+- We can see that the latest entry was added at the last.
+
+#+begin_src python :results output
+spam = ["A", "B", "C", "D", "E"]
+spam.insert(1,"Mouse")
+print(spam)
+#+end_src
+
+#+RESULTS:
+: ['A', 'Mouse', 'B', 'C', 'D', 'E']
+ 
+- Append method inserts the item at the index. 
+- The return value of both the methods is None.
+- You can't append a value to a string or an int or a boolean variable, duh!
+  
