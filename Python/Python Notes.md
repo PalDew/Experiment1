@@ -12,15 +12,17 @@ Functions Used:
 - int() - to convert or treat a value or a variable betweenthe parentheses as an int
 - str() - same but treat it as string
 - float() - treat it as a floating point data type
+
 ### Concepts Learnt
 Dynamically typed language
 Interpreted, not compiled
-+ operator can be used to join strings.
-* operator can be used to repeat strings.
+\+ operator can be used to join strings.
+\* operator can be used to repeat strings.
 Expressions are most basic units of programming instruction. They can always evaluate down to a single value.
 Statements are more generalized form. Any instruction that results in an action can be termed as a statement. It has to have a valid syntax and meaning though.
 Float, Int and String as Data Types
 Boolean value - either true or false
+
 #### Comparison Operators
 == equal to
 != not equal to
