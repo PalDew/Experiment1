@@ -13,10 +13,10 @@ saysHi()
 print("bottom")
 
 ## Making functions more powerful by passing parameters
-def saysHi(name):
-    print(f"Hello {name}")
+def saysHi(name, age):
+    print(f"Hello {name}, you are {age} years old.")
 
-saysHi("Mike")
-saysHi("Steve")
+saysHi("Mike", 20)
+saysHi("Steve", "Yellow")
 
-I left at timestamp 1:32:34
+# You can pass an array, a boolean or any and multiple data types to a funciton.

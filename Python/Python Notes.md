@@ -1,4 +1,5 @@
 ### Variable Names
+
 - one word with no sapces.
 - letters,numbers and _ character
 - can't begin with a number.
@@ -6,6 +7,7 @@
 
 ### First program about typing name and getting input
 Functions Used:
+
 - print() - for printing
 - input() - for prompting user to input something.
 - len() - to calculate the length of a string
@@ -23,10 +25,19 @@ Statements are more generalized form. Any instruction that results in an action 
 Float, Int and String as Data Types
 Boolean value - either true or false
 
+- A function can only return one statement. After returning, it escapes or terminates the function.
+	To dispaly or return multiple values, figure out a way to do so in a single statement.
+- In lists, you can call an item using negative index. It just searches from the last.
+- In python, the data is stored in heaps. For lists, you can only point the variable to the data heap.
+	This means that when you make changes to one list, the other heap will also change if they are pointing to the same heap. To make a proper copy, use list.copy(). The assignment operators like ones used for integers and strings don't work in lists.
+- You can insert or remove an item / extend, clear, sort and reverse the entire list.
+- While inserting, pointer moes to the index, shifts the list to the right and inserts the new item. The rule is the same, but the behaviour changes while using negative indices.
+
 #### Comparison Operators
 == equal to
 != not equal to
 > greater than
-< lesser than 
+< lesser than
 <= lesser than or equal to
 >= greter than equal to
+
