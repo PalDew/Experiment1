@@ -22,3 +22,8 @@ print(number_grid[3])  ## This prints 0 but as the entire list
 
 for row in number_grid:
     print(row) # It is printing out all the items in the list of number_grid. The fact that the items themselves are a list is another matter.
+
+for row in number_grid:
+    for col in row:
+        print(col)
+    print("\n")
