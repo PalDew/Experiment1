@@ -1,0 +1,88 @@
+#+title: Notes
+Source - These notes are taken from the book - C Programming Guide by Dennis Ritchie
+
+* Chapter 1 - A Tutorial Introduction
+
+Context setting - This Chapter does not include a lot of advanced features of C.
+
+** 1.1 Getting Started
+Writing programs.
+[[file:1.c][First C program of the Book]] (page 11/289)
+Then it teaches us how to compile and run files using the unix terminal.
+gcc 1.c -o 1
+This uses the latest format of gcc compiler.
+To use the one mentioned in the book, use cc -std=89 1.c
+Peersonally, I will just wrap my program with
+
+ int main (void){
+...
+return 0;}
+
+Program - A C proram consists of functions and variables.
+    Here, main() is a function. A special function in C. Because it is executed first.
+    main calls for other functions to help execute the program. The #include<stdio.h> is a standard input/output library. In the paratheses after a function, we provide a list of arguments called parameters.
+Function - A function is called by naming it, followed by a parthesized list of arguments.
+    printf() is a function that displays the arguments to the screen. In this case, the arguments are of the type called string constants.
+    - Be mindful of whitespaces in the program:
+      printf("Hello World
+      ")
+      Will give you an error.
+
+      printf() doesn't provide a newline character automatically. So multiple printf statements after another write after the previous one ends, unless we give a new-line escape character.
+** 1.2 Variables and Airthmetic Expressions
+This uses the formula C=(5/9)(F-32) to change Fahrenheit to Celcius.
+[[file:2.c][Second Program]] page 13/289
+Here, initially I had a problem of declaring Fah and Cel as int, so their exact values did not match. Then the formula 5/9 (Fah-32) returned 0 because the result of 5/9 (both integers) is 0. So, finally it worked with 5*(f-32)/9 with all ints.
+
+We learnt - the concept of comments, variable types (string constants, integers, floating point numbers).
+I am using a 32 bit system. So the range of integers is (2e-31 to 2e31 -1). For long integers, it is (-2e63 to 2e63 - 1).
+There's also char - single character.
+Short - short integer
+Long - long integer
+Double - double precision floating point
+
+First, we declare the variables (their name and their types). Then we assign values to the variables. Each line is terminated with a semi-column.
+
+The function of while loop is to execute a step multiple times. The body of a while can be one or more statements enclosed in curly braces while the test condition(s) are written inside parentheses. Each time the program reaches the end of the body, it goes to the test condition again. Since it is a while loop, the code is executed first (it is executed at least one time) and then the test condition is checked. Until the condition fails, the loop never ends. Sometimes we might end up in an infinite loop.
+
+Printf is not a part of C language. There is no input or output defined in C. It is function from the standard library.
+** 1.3 For Statement
+[[file:1_3.c][Third Program in the Book]] (Page 19/289)
+Doing the same conversion from °F to °C using for loop this time.
+[[file:1_4.c][Homework file]] 1-5 page 20/289
+Just printing the F to C conversion table in reverse order.
+** 1.4 Symbolic Constants
+It's bad practice to bury random numbers in a program: they convey little information to someone else reading it.
+ [[file:1_5.c][Example]] Page 21/289
+The quantities defined using the @ are preprocessors. They do not end with a semi colon. Generally written in all caps to distinguish them from regular variables. They do not require any extra memory space to store themselves.
+** 1.5 Character Input and Output
+Text input or output is dealt with as streams. A text stream is a sequence of characters divided into lines, each line consists of zero or more characters followed by a newline character. It is the responsibility of the library to make each input or output follow this model. To input and output one character at a time; we use getchar() and putchar() functions.
+*** 1.5.1 File Copying
+Given that we know getchar and putchar, we can write a surprising amount of code without knowing anything more about input and output.
+[[file:1_6.c][Example]] page 21/289
+This is one of the few programs that would work without the return statement as we have to manually stop the execution with C-d to emulate EOF.
+[[file:1_7.c][Homework]] - for finding the value of EOF. [[file:1_8.c][This file]] for verifying the expression. This means that the expression getchar() != EOF either return 1 when it is not the end of the file; and returns 0 when it receives EOF (C-d).
+*** 1.5.2 Character Counting
+[[file:1_9.c][This example]] page 24/289
+This program also takes return or enter key as input too. Each time we press enter after input, it sends a \n character. This is counted as a character by our program.
+*** 1.5.3 Line Counting
+[[file:10.c][The example]] page 25/289
+gives a very elegant method of counting lines. It just checks for the newline character '\n' (Enter Key) pressed. Then it increases the counter variable. This is under the while loop that goes on until it encounters the EOF. Via the check while(c=getchar() != EOF).
+The book warns about getting confused about the = (assignment) and == (equal) operator.
+The '\n' character is treated as a string constant because it is written inside single quotes. The value of the string constant is the newline character. The character constant represents an integer value equal to th numerical value of the character inhe machine's character set. '\n' character corresponds to ASCII value of 10. \n is also a string that has just one character.
+
+The homework was given to write program to count the [[file:11.c][number of tabs, newlines and spaces]].
+The other homework was to copy the input to the output and repace each string of one or more blanks with a single blank.
+The [[file:12.c][third homework]] was to replace each tab character with \t, each backspace with \b and each backslash with \\. The terminal does not read the backspace character. It would have been possible in older machines. The syntax is correct though.
+*** 1.5.4 Word Counting
+A word (for now) is define as any sequence of characters that does not contain a blank, tab or newline.
+[[file:14.c][The program]] does that. I also have [[file:14_1.c][another example]] where I did some experimenting about implementing the same logic. I think I am beginning to see why my approach was a bit wrong.
+** 1.6 Arrays
+Let's write a program to count the number of occurrences of each digit, of white space characters (blanks, new-lines and tabs) and of all other characters.
+[[file:15.c][The program]] (page 28/289)
+First read the char. Then when the character is in between 0 and 9, update that one.
+If the char is space, tab or newline, increase the newline count.
+Else, update the other variable.
+[[file:15_1.c][Exercise 1-13]] Boy this was a curveball.
+** 1.7 Functions
+Functions in C are equivalent to a subroutine. With properly designed functions, it is impossible to ignore how a job is done.
